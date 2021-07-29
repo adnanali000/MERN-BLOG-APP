@@ -1,0 +1,66 @@
+.register{
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(
+    rgba(255,255,255,0.5),
+    rgba(255,255,255,0.5)), 
+    url("https://images.pexels.com/photos/3184464/pexels-photo-3184464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    /* url("https://images.pexels.com/photos/462331/pexels-photo-462331.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"); */
+    background-size: cover;
+    align-items: center;
+    background-repeat: no-repeat;
+}
+.registerTitle{
+    font-size: 45px;
+}
+.registerForm{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.registerForm > label{
+    margin: 10px 0;
+}
+.registerInput{
+    padding: 10px;
+    border: none;
+    width: 200px;
+    background-color: white;
+}
+.registerBtn{
+    margin-top: 20px;
+    cursor: pointer;
+    border: none;
+    color: grey;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: grey;
+    background-color: lightgrey;
+}
+
+.registerBtn:hover{
+    background-color: grey;
+    color: white;
+}
+.registerInput:focus{
+    outline: none;
+}
+.registerLoginBtn{
+    background-color: lightcoral;
+    position: absolute;
+    top: 60px;
+    color: white;
+    right: 20px;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 16px;
+    width: 100px;
+    border: none;
+    border-radius: 10px;
+}
+.registerLoginBtn:hover{
+    background-color: red;
+}

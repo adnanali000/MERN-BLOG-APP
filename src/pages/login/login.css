@@ -1,0 +1,64 @@
+.login{
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(
+    rgba(255,255,255,0.5),
+    rgba(255,255,255,0.5)), 
+    url("https://images.pexels.com/photos/839465/pexels-photo-839465.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-size: cover;
+    align-items: center;
+    background-repeat: no-repeat;
+}
+.loginTitle{
+    font-size: 45px;
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.loginForm > label{
+    margin: 10px 0;
+}
+.loginInput{
+    padding: 10px;
+    border: none;
+    width: 200px;
+    background-color: white;
+}
+.loginBtn{
+    margin-top: 20px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: lightcoral;
+}
+
+.loginBtn:hover{
+    background-color: red;
+}
+.loginInput:focus{
+    outline: none;
+}
+.loginRegisterBtn{
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 16px;
+    color: grey;
+    width: 100px;
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+}
+.loginRegisterBtn:hover{
+    background-color: grey;
+    color: white;
+}
