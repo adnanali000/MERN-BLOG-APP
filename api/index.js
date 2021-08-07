@@ -14,6 +14,9 @@ const postRoute = require("./routes/post");
 //category route
 const categoryRoute = require("./routes/categories");
 
+//images storage
+const multer = require("multer");
+
 dotenv.config();
 app.use(express.json());
 
@@ -23,6 +26,24 @@ mongoose.connect(process.env.MONGO_URL, {
     useUnifiedTopology: true,
     useCreateIndex:true,
 }).then(console.log("connected to mongoDB")).catch(err => console.log(err));
+
+//storage for images
+const storage = multer.diskStorage({
+    destination:(req,file,cb)=>{
+        cb(null,"images")
+    },filename(req,file,cb){
+        // cb(null,"logo.png")
+        cb(null,req.body.name)
+    }
+})
+
+
+//upload file
+const upload = multer({storage:storage});
+app.post("/api/upload",upload.single("file"),(req,res)=>{
+    res.status(200).json("file has been uploaded");
+})
+
 
 //indicate router for authentication / login
 app.use("/api/auth",authRoute);
