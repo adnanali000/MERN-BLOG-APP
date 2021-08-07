@@ -11,6 +11,8 @@ const userRoute = require("./routes/users");
 //post route
 const postRoute = require("./routes/post");
 
+//category route
+const categoryRoute = require("./routes/categories");
 
 dotenv.config();
 app.use(express.json());
@@ -30,6 +32,9 @@ app.use("/api/users",userRoute);
 
 //indicate route for post
 app.use("/api/posts",postRoute);
+
+//indicate route for post
+app.use("/api/categories",categoryRoute);
 
 //app listen on port 5000
 app.listen("5000",()=>{
