@@ -5,6 +5,13 @@ const mongoose = require('mongoose');
 //auth route
 const authRoute = require('./routes/auth');
 
+//for update/delete user
+const userRoute = require("./routes/users");
+
+//post route
+const postRoute = require("./routes/post");
+
+
 dotenv.config();
 app.use(express.json());
 
@@ -18,8 +25,13 @@ mongoose.connect(process.env.MONGO_URL, {
 //indicate router for authentication / login
 app.use("/api/auth",authRoute);
 
+//indicate router for update delete
+app.use("/api/users",userRoute);
+
+//indicate route for post
+app.use("/api/posts",postRoute);
 
 //app listen on port 5000
 app.listen("5000",()=>{
-    console.log("backend work begin")
+    console.log("backend work started");
 })
