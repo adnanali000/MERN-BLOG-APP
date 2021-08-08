@@ -1,40 +1,46 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import './singlePost.css';
 
 export default function SinglePost() {
+    const location = useLocation();
+    const path = location.pathname.split("/")[2];
+    const [post,setPost] = useState({});
+    axios.defaults.baseURL = 'http://localhost:5000/api/';
+
+    useEffect(()=>{
+        const getPost = async ()=>{
+            const res = await axios.get('/posts/'+ path);
+            setPost(res.data);
+        }
+        getPost();
+    },[path])
+
     return (
         <div className="singlePost">
             <div className="singlePostWrapper">
+                {post.photo && (
+
                 <img
                 className="singlePostImg"
-                src="https://images.pexels.com/photos/315788/pexels-photo-315788.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" 
+                src={post.photo}
                 alt="" />
-                <h1 className="singlePostTitle">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                )}
 
+                    <h1 className="singlePostTitle">
+                    {post.title}
                     <div className="singlePostEdit">
                         <i className="singlePostIcon far fa-edit"></i>
                         <i className="singlePostIcon far fa-trash-alt"></i>
                     </div>
                 </h1>
                 <div className="singlePostInfo">
-                    <span className="singlePostAuthor">Author: <b>Adnan</b></span>
-                    <span className="singlePostDate">1 hour ago</span>
+                    <span className="singlePostAuthor">Author: <b>{post.username}</b></span>
+                    <span className="singlePostDate">{new Date(post.createdAt).toDateString()}</span>
                 </div>
                 <p className="singlePostDes">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                    dolore unde ut temporibus, tempora animi nesciunt nulla, quod ratione numquam. Quia quasi labore quas accusamus laborum?
-                    Eveniet voluptate magni beatae nam eaque veritatis
-                     dolore unde ut orem ipsum dolor sit amet consectetur, adipisicing elit. 
-                    dolore unde ut temporibus, tempora animi nesciunt nulla, quod ratione numquam. Quia quasi labore quas accusamus laborum?
-                    Eveniet voluptate magni beatae nam eaque veritatis
-                     dolore unde ut orem ipsum dolor sit amet consectetur, adipisicing elit. 
-                    dolore unde ut temporibus, tempora animi nesciunt nulla, quod ratione numquam. Quia quasi labore quas accusamus laborum?
-                    Eveniet voluptate magni beatae nam eaque veritatis
-                     dolore unde ut 
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                    dolore unde ut temporibus, tempora animi nesciunt nulla, quod ratione numquam. Quia quasi labore quas accusamus laborum?
-                    Eveniet voluptate magni beatae nam eaque veritatis
-                     dolore unde ut temporibus, tempora animi nesciunt nulla, quod ratione numquam. Quia quasi labore quas accusamus laborum?
+                    {post.desc}
                 </p>
             </div>
         </div>
