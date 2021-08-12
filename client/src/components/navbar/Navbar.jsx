@@ -4,7 +4,11 @@ import { useContext } from 'react';
 import { Context } from '../../context/Context';
 
 export default function Navbar() {
-    const {user} = useContext(Context);
+    const {user,dispatch} = useContext(Context);
+
+    const handleLogout = ()=>{
+        dispatch({type:"LOGOUT"})
+    }
     return (
         <div className="nav">
             <div className="navLeft">
@@ -19,7 +23,7 @@ export default function Navbar() {
                     <li className="navListItem"><Link className="link" to ="/about">ABOUT</Link></li>
                     <li className="navListItem"><Link className="link" to ="/contact">CONTACT</Link></li>
                    <li className="navListItem"><Link className="link" to="/write">WRITE</Link></li>
-                    <li className="navListItem">
+                    <li className="navListItem" onClick={handleLogout}>
                         {user && "LOGOUT"}
                     </li>
 
@@ -28,7 +32,10 @@ export default function Navbar() {
             <div className="navRight">
                 {
                 user ? (
-                        <img src="https://avatars.githubusercontent.com/u/46294668?v=4" alt="" className="navImg" />
+                        <img 
+                        src={user.profilePicture} 
+                        alt="" 
+                        className="navImg" />
                        )
                       :(
                     //   <img src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg" alt="" className="navImg" />
