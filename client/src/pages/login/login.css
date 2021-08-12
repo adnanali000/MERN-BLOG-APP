@@ -39,6 +39,11 @@
     background-color: lightcoral;
 }
 
+.loginBtn:disabled{
+    cursor: not-allowed;
+    background-color: grey;
+}
+
 .loginBtn:hover{
     background-color: red;
 }
